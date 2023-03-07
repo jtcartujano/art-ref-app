@@ -1,21 +1,18 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
+import { NavLink } from 'react-router-dom';
 
-class ReferencePreview extends React.Component{
+const ReferencePreview = ({reference}) => {
+    let url = '/view/' + reference.id;
+    // there's hopefully a nicer way to do this, figure it out later
 
-    render(){
-
-        const id = 24;
-        const image = "https://pbs.twimg.com/media/FklNcCJWQAMmxL2?format=jpg&name=900x900";
-        //Remove this later obviously, this is just for the sake of having a filler.
-        const source = "https://twitter.com/palmie_oekaki/status/1605899894669168641";
-    
-        return (
-            <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                <img src={image} />
-            </div>
-        )
-    }
+    return (
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <NavLink to={url}>
+                <img src={reference.image} />
+            </NavLink>
+        </div>
+    )
 }
 
 export default ReferencePreview;

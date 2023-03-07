@@ -1,86 +1,41 @@
 import React from 'react';
-import Header from '../../Layout/Header/Header.js';
-import Footer from '../../Layout/Footer/Footer.js';
-import Reference from '../../Reference/Reference.js';
 import PageWarning from '../../PageWarning/PageWarning.js';
-import ReferencePreview from '../../Reference/ReferencePreview.js';
 import FilterList from '../../Layout/FilterList/FilterList.js';
+import { connect } from 'react-redux';
+import ReferenceList from '../../Reference/ReferenceList.js';
 
-class MainPage extends React.Component {
+const MainPage = (props) => {
 
-    render(){
-        return (
-            <div class="grid grid-cols-4 min-h-screen">
-                <div class="col-span-4 pb-2">
-                    <Header/>
-                </div>
-                <div class="col-span-4 py-4 justify-self-center">
+    console.log("props");
+    const { references } = props;
+    console.log(references);
+
+    return (
+        <div class="grid grid-cols-4 min-h-screen">
+            <div class="flex col-span-1 p-4 max-w-sm">
+                <FilterList />
+            </div>
+
+            <div class="col-span-3 p-4">
+                
+                <div class="w-1/2 py-4">
                     <PageWarning />
                 </div>
-                <div class="col-span-4">
+                <div class="">
                     <p>this will be to showcase popular tags, new additions etc</p>
                 </div>
 
-                <div class="flex col-span-1 p-4 max-w-sm">
-                    <FilterList />
-                </div>
-
-                <div class="col-span-3 p-4">
-                    <div class="grid grid-cols-3 gap-4">
-                        {/* nested grid to display the thumbnails */}
-                        
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-                        <div>
-                            <ReferencePreview/>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="col-span-4 sticky top-[100vh] bg-neutral-600">
-                    <Footer />
-                </div>
-
-                {/* <div class="col-span-2">
-                    <p>and this is where a footer will go</p>
-                </div> */}
-
+                <ReferenceList references={references} />
             </div>
-        )
+
+        </div>
+    )
+}
+
+const mapStateToProps = (state) => {
+    return {
+        references: state.reference.references
     }
 }
 
-export default MainPage
+export default connect(mapStateToProps)(MainPage)

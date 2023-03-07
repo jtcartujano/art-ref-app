@@ -7,7 +7,9 @@ const SignedOutOptions = () => {
             <NavLink to='/SignIn'>
                 <button class="rounded bg-white p-2">Log In</button>
             </NavLink>
-            <button class="rounded bg-white p-2">Sign Up</button>
+            <NavLink to='/SignUp'>
+                <button class="rounded bg-white p-2">Sign Up</button>
+            </NavLink>
         </div>
     )
 }
