@@ -13,7 +13,10 @@ const initState = {
 }
 
 const referenceReducer = (state = initState, action) => {
-    console.log(state);
+    switch (action.type) {
+        case 'CREATE_REFERENCE':
+            console.log('reference has been made', action.reference);
+    }
     return state;
 }
 

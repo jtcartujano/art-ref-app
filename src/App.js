@@ -7,6 +7,7 @@ import SignIn from './Components/Auth/SignIn/SignIn';
 import SignUp from './Components/Auth/SignUp/SignUp';
 import Header from './Components/Layout/Header/Header';
 import Footer from './Components/Layout/Footer/Footer';
+import CreateReference from './Components/Reference/CreateReference';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Header />
         <Switch>
           <Route path='/view/:id' component={ViewPage} />
+          <Route path='/create' component={CreateReference} />
           <Route exact path='/SignIn' component={SignIn} />
           <Route exact path='/SignUp' component={SignUp} />
           <Route path='/' component={MainPage} />
